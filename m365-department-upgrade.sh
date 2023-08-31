@@ -5,7 +5,7 @@
 
 department="Sekcja Instruktorów"
 
-DKR="docker run \
+DKR="docker run --rm \
         --mount type=bind,source="${PWD}"/.cli-m365-tokens.json,dst=/home/cli-microsoft365/.cli-m365-tokens.json \
         --mount type=bind,source="${PWD}"/.cli-m365-msal.json,dst=/home/cli-microsoft365/.cli-m365-msal.json \
         m365pnp/cli-microsoft365"
