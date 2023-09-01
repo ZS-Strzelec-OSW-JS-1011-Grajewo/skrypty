@@ -10,7 +10,7 @@ import json
 
 ## Uwierzytelnienie w SMS API
 if "SMS_API_TOKEN" not in environ:
-    print("Brak ustawionego parametru SMS_API_TOKEN")
+    print("SMS_API_TOKEN environment variable not set")
     exit(1)
 token = environ.get("SMS_API_TOKEN")
 client = SmsApiPlClient(access_token=token)
@@ -46,11 +46,9 @@ for rifleman in user_passwords.keys():
 # Wysłanie SMSów przez SMS API
 for rifleman, password in user_passwords.items():
     if mobile_phones[rifleman] is not None:
-        print(
-            f"Czołem! Twój mail do https://teams.microsoft.com/ to {rifleman} a jednorazowe hasło to {password}"
-        )
         client.sms.send(
             to=mobile_phones[rifleman],
-            message=f"Czołem! Twój mail do https://teams.microsoft.com/ to {rifleman} a jednorazowe hasło to {password}",
+            message=f"Czolem! Twoj mail do https://teams.microsoft.com/ to {rifleman} a jednorazowe haslo to {password}",
             max_parts=1,
         )
+    print(f"SMS sent to {rifleman}")
